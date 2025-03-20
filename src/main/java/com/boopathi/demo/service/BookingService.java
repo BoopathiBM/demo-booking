@@ -1,11 +1,12 @@
 package com.boopathi.demo.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.boopathi.demo.BookingDTO;
+import com.boopathi.demo.dto.*;
 import com.boopathi.demo.model.Booking;
 import com.boopathi.demo.model.Customer;
 import com.boopathi.demo.model.Trip;
@@ -26,7 +27,7 @@ public class BookingService {
 	private BookingRepository bookingRepository;
 
 
-	public Booking createBooking(BookingDTO bookingDTO){
+	public Booking createBooking(BookingRequestDTO bookingDTO){
 
 		Optional<Customer> customerOpt = customerRepository.findById(bookingDTO.getCustomerId());
 		Optional<Trip> tripOpt = tripRepository.findById(bookingDTO.getTripId()); 
@@ -42,10 +43,11 @@ public class BookingService {
 		booking.setStatus("confirm");
 
 		return (Booking) bookingRepository.save(booking);
-
-
-
 		
+	}
+
+	public List<Booking> getAllBookings(){
+		return bookingRepository.findAll();
 	}
 
 }

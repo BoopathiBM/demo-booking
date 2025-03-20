@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Getter
 @Setter
@@ -19,6 +21,7 @@ public class Trip {
     private String date;
     private Double price;
 
-    @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL)
+    @JsonIgnore
+	@OneToMany(mappedBy = "trip", cascade = CascadeType.ALL)
     private List<Booking> bookings;
 }

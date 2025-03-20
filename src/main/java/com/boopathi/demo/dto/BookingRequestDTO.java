@@ -1,4 +1,4 @@
-package com.boopathi.demo;
+package com.boopathi.demo.dto;
 
 import java.time.LocalDate;
 
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BookingDTO {
+public class BookingRequestDTO {
 
 	private Long customerId;
 	private Long tripId;
